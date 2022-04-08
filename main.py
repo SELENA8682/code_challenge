@@ -53,13 +53,13 @@ def main():
         # print(s.id)
 
     # append employees
-    Manager_id = 0  # assume there is no top manager
+    manager_id = 0  # assume there is no top manager
     for id in staffs:
         add = staffs[id]
         if add.manager:
             staffs[add.manager].employees.append([add.id, add.name])
         else:
-            Manager_id = add.id
+            manager_id = add.id
 
     #   sum up sealary simutiously
     total_salary = 0
@@ -69,7 +69,7 @@ def main():
         total_salary += add.salary
 
     # printing staffs tree
-    hierarchy(Manager_id, 0)
+    hierarchy(manager_id, 0)
     print(f"total salary: {total_salary}")
 
     # unit test
