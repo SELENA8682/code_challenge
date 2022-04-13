@@ -12,11 +12,11 @@ class Employee:
         self.name = employee_list['first_name']
         self.manager = employee_list['manager']
         self.salary = employee_list['salary']
-        self.employees = []  # [id, name]
+        self.create_employees_list = []  # [id, name]
         print(f"Created {self.name}")
 
     def sort_emp(self):
-        self.employees = sorted(self.employees, key= lambda x : x[1])
+        self.create_employees_list = sorted(self.create_employees_list, key= lambda x : x[1])
 
         
 
@@ -48,25 +48,25 @@ def main():
 
     # create object into dict id -> object
     for employees in employee_list:  
-        add = Employee(employees)
-        staffs[add.id] = add
+        new_object_in_employee_list_dic = Employee(employees)
+        staffs[new_object_in_employee_list_dic.id] = new_object_in_employee_list_dic
         # print(s.id)
 
     # append employees
     manager_id = 0  # assume there is no top manager
     for id in staffs:
-        add = staffs[id]
-        if add.manager:
-            staffs[add.manager].employees.append([add.id, add.name])
+        new_object_in_employee_list_dic = staffs[id]
+        if new_object_in_employee_list_dic.manager:
+            staffs[new_object_in_employee_list_dic.manager].employees.append([new_object_in_employee_list_dic.id, new_object_in_employee_list_dic.name])
         else:
-            manager_id = add.id
+            manager_id = new_object_in_employee_list_dic.id
 
     #   sum up sealary simutiously
     total_salary = 0
     for id in staffs:
-        add = staffs[id]
-        add.sort_emp()
-        total_salary += add.salary
+        new_object_in_employee_list_dic = staffs[id]
+        new_object_in_employee_list_dic.sort_emp()
+        total_salary += new_object_in_employee_list_dic.salary
 
     # printing staffs tree
     hierarchy(manager_id, 0)
