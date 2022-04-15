@@ -32,9 +32,9 @@ def hierarchy(id, count):
     print(slash + add.name)
     # print(s.employees)
 
-    if add.employees:  # dont use recursive function
+    if add.create_employees_list:  # dont use recursive function
         print(slash + f"Employees of: {add.name}")
-        for e, _ in add.employees:
+        for e, _ in add.create_employees_list:
             hierarchy(e, count+1)
 
 
@@ -56,29 +56,28 @@ def get_employee_list():
 def main():
     employee_list = get_employee_list()
     print(len(employee_list))
-    # append employees
-   
-    # manager_id = 0  # assume there is no top manager
-    # for id in staffs:
-    #     new_object_in_employee_list_dic = staffs[id]
-    #     if new_object_in_employee_list_dic.manager:
-    #         staffs[new_object_in_employee_list_dic.manager].employees.append([new_object_in_employee_list_dic.id, new_object_in_employee_list_dic.name])
-    #     else:
-    #         manager_id = new_object_in_employee_list_dic.id
+    
+    manager_id = None # assume there is no top manager
+    for id in staffs:
+        new_object_in_employee_dict = staffs[id]
+        if new_object_in_employee_dict.manager:
+            staffs[new_object_in_employee_dict.manager].create_employees_list.append([new_object_in_employee_dict.id, new_object_in_employee_dict.name])
+        else:
+            manager_id = new_object_in_employee_dict.id
 
-    # #   sum up sealary simutiously
-    # total_salary = 0
-    # for id in staffs:
-    #     new_object_in_employee_list_dic = staffs[id]
-    #     new_object_in_employee_list_dic.sort_emp()
-    #     total_salary += new_object_in_employee_list_dic.salary
+    #   sum up sealary simutiously
+    total_salary = 0
+    for id in staffs:
+        new_object_in_employee_dict = staffs[id]
+        new_object_in_employee_dict.sort_emp()
+        total_salary += new_object_in_employee_dict.salary
 
-    # # printing staffs tree
-    # hierarchy(manager_id, 0)
-    # print(f"total salary: {total_salary}")
+    # printing staffs tree
+    hierarchy(manager_id, 0)
+    print(f"total salary: {total_salary}")
 
-    # # unit test
-    # hierarchy(6, 0)  # id = 6
+    # unit test
+    hierarchy(6, 0)  # id = 6
 
 
 if __name__ == '__main__':
