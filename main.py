@@ -1,6 +1,8 @@
 import json
 
-from employee_config import Employee, EmployeeJson
+from employee_config import EmployeeJson
+
+
 
 
 def get_employee_list():
