@@ -18,9 +18,9 @@ def get_employee_list():
     return new_employee_list
 
 def get_total_salary(employee_list):
-    return sum(em.salary for em in employee_list)
-  
-
+    if employee_list:
+        return sum(em.salary for em in employee_list)
+    return 0 
 
 def main():
     employee_list = get_employee_list()
