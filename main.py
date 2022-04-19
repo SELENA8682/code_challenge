@@ -5,10 +5,12 @@ from employee_config import EmployeeJson
 
 
 
-def get_employee_list():
-    file = open("input.json")
+def get_employee_list(file_name):
+    if not file_name:
+        return []
+        
+    file = open(file_name)
     employee_list = json.load(file)
-
     new_employee_list = []
     for employee in employee_list:
         employee_instance = EmployeeJson(**employee).get_employee()
@@ -23,7 +25,7 @@ def get_total_salary(employee_list):
     return 0 
 
 def main():
-    employee_list = get_employee_list()
+    employee_list = get_employee_list(None)
     totalsalary = get_total_salary(employee_list)   
 
 
