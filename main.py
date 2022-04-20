@@ -1,6 +1,6 @@
 import json
 
-from employee_config import EmployeeJson
+from employee_config import Employee, EmployeeJson
 
 
 
@@ -25,7 +25,16 @@ def get_total_salary(employee_list):
     return 0 
 
 def main():
-    employee_list = get_employee_list(None)
+    employee_list = get_employee_list("input.json") 
+    
+    manager_dict =  {}
+    for employee in employee_list: 
+        if employee not in  manager_dict:
+            return 0
+        else:
+           manager_dict[id].append([Employee.id, Employee.firstname])
+       
+       
     totalsalary = get_total_salary(employee_list)   
 
 

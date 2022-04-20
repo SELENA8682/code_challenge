@@ -8,6 +8,9 @@ class Employee:
         self.name = first_name
         self.manager = manager
         self.salary = salary
+    
+    def get_manager() -> 'Employee':
+        pass
      
 #DTO data transfer object
 class EmployeeJson(BaseModel):
