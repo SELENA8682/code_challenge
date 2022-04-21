@@ -30,10 +30,11 @@ def main():
     
     manager_dict =  {}
     for employee in employee_list: 
-        if employee not in  manager_dict:
-            return 0
-        else:
-           manager_dict[id].append([Employee.id, Employee.firstname])
+        manager_dict[employee.id] = employee
+            
+    for employee in employee_list:
+           if employee.manager:
+               manager = manager_dict.get(employee.manager)
        
        
     totalsalary = get_total_salary(employee_list)   
