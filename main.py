@@ -1,11 +1,12 @@
 import json
+from typing import List
 
-from employee_config import EmployeeJson
+from employee_config import Employee, EmployeeJson
 
 
 
 
-def get_employee_list(file_name):
+def get_employee_list(file_name) -> List[Employee]:
     if not file_name:
         return []
         
@@ -25,7 +26,17 @@ def get_total_salary(employee_list):
     return 0 
 
 def main():
-    employee_list = get_employee_list(None)
+    employee_list = get_employee_list("input.json") 
+    
+    employee_dict =  {}
+    for employee in employee_list: 
+        employee_dict[employee.id] = employee
+            
+    for employee in employee_list:
+           if employee.manager:
+                manager = employee_dict.get(employee.manager)
+                employee.set_manager(manager)
+       
     totalsalary = get_total_salary(employee_list)   
 
 
