@@ -28,31 +28,16 @@ def get_total_salary(employee_list):
 def main():
     employee_list = get_employee_list("input.json") 
     
-    manager_dict =  {}
+    employee_dict =  {}
     for employee in employee_list: 
-        manager_dict[employee.id] = employee
+        employee_dict[employee.id] = employee
             
     for employee in employee_list:
            if employee.manager:
-               manager = manager_dict.get(employee.manager)
-       
+                manager = employee_dict.get(employee.manager)
+                employee.set_manager(manager)
        
     totalsalary = get_total_salary(employee_list)   
-
-# def reference():
-#     employee_list = get_employee_list("input.json") 
-    
-#     # key = id, value = employee 
-#     employee_dict = {}
-#     for employee in employee_list:
-#         employee_dict[employee.id] = employee
-    
-#     for employee in employee_list:
-#         if employee.manager:
-#             manager = employee_dict.get(employee.manager)
-#             employee.set_manager(manager)
-
-#     print(employee_list)
 
 
 if __name__ == '__main__':
