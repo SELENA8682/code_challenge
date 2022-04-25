@@ -1,7 +1,8 @@
 from typing import Optional
 from pydantic import BaseModel
 
-"""
+class Employee:
+    """
     This is a class for all the employees .
       
     Attributes:
@@ -11,28 +12,26 @@ from pydantic import BaseModel
         manager (int): To show whether employee has manager, if it has manager reveals the manager id ; while shows  null
         salary (int): salary of each employee.
     """
-
-class Employee:
     manager_instance: 'Employee'
-
+   
     def __init__(self, id, first_name ,manager, salary) :
         """
-        Constructs all the necessary attributes for the employee object.
+        Construct all the necessary attributes for the employee object.
 
         Parameters
-        ----------
+        ---
             id (int): The id number of each employee.
             first_name (str):The first name of each employee.
             manager (int): To show whether employee has manager, if it has manager reveals the manager id ; while shows  null
             salary (int): salary of each employee.
         
         Methods
-        -------
+        ---
             get_manager():
                 to load manager's instance from employee
 
             set_manager(manager):
-                to excute the manger instance in exploee
+                 to link employee and manager
         """
         self.id = id
         self.name = first_name
@@ -40,7 +39,6 @@ class Employee:
         self.salary = salary
     
     def get_manager(self) -> 'Employee':
-         
         """
             to get manager info 
 
@@ -51,10 +49,7 @@ class Employee:
         """       
         return self.manager_instance
        
-
     def set_manager(self,manager):
-        self.manager_instance = manager
-
         """
         to link employee and manager
 
@@ -63,6 +58,9 @@ class Employee:
         manager : 
             link the manager info in to manager instance
         """
+        self.manager_instance = manager
+
+        
 
 #DTO data transfer object
 class EmployeeJson(BaseModel):

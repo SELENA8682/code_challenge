@@ -2,7 +2,7 @@
 from employee_config import Employee
 from main import get_employee_list, get_total_salary
 # testing whether the function behaves as expected.
-# apply assert to ensure the right answer.
+# apply assertion to ensure the right answer.
 
 
 def test_get_total_salary_empty_employee_list():
@@ -25,7 +25,7 @@ def test_get_total_salary():
     assert totalsalaryvalue == 1200
 
 def test_get_total_salary_main():
-    """ test get_total_salary function with employee list include all employees"""
+    """ test get_total_salary function with employee list including all employees"""
     employee_list = get_employee_list()
     totalsalaryvalue = get_total_salary(employee_list)
     assert totalsalaryvalue == 590000
