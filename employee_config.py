@@ -1,4 +1,5 @@
-from typing import Optional
+
+from typing import List, Optional
 from pydantic import BaseModel
 
 class Employee:
@@ -59,8 +60,14 @@ class Employee:
             link the manager info in to manager instance
         """
         self.manager_instance = manager
+        manager.employees.append(self)
 
-        
+
+class Manager(Employee):
+    def __init__(self,employee):
+        super().__init__(employee.id, employee.first_name, employee.manager, employee.salary)
+        self.employees = []
+
 
 #DTO data transfer object
 class EmployeeJson(BaseModel):
