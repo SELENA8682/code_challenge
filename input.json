@@ -20,7 +20,7 @@
     {
         "id": 4,
         "first_name": "Jason",
-        "manager": null,
+        "manager": 1,
         "salary": 80000
     },
     {
@@ -41,5 +41,4 @@
         "manager": 1,
         "salary": 80000
     }
-    
 ]
