@@ -14,7 +14,6 @@ class Employee:
         manager (int): To show whether employee has manager, if it has manager reveals the manager id ; while shows  null
         salary (int): salary of each employee.
     """
-    manager_instance: 'Employee'
 
     def __init__(self, id, first_name, manager, salary):
         """
@@ -37,8 +36,9 @@ class Employee:
         """
         self.id = id
         self.name = first_name
-        self.manager = manager
         self.salary = salary
+        self.manager = manager
+        self.manager_instance = None
 
     def get_manager(self) -> 'Employee':
         """
@@ -67,6 +67,7 @@ class Employee:
 class Manager(Employee):
     def __init__(self, employee):
         super().__init__(employee.id, employee.name, employee.manager, employee.salary)
+        self.manager_instance = employee.manager_instance
         self.employees = []
 
 
