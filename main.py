@@ -49,8 +49,21 @@ def main():
 
         employee.set_manager(manager)
 
-    totalsalary = get_total_salary(employee_list)
+    employee_dict_list = [employee for employee in employee_dict.values()]
+    employee_dict_list.sort(key=lambda e: e.name)
+    
+    manager_dict_list = [manager for manager in manager_dict.values()]
+    manager_dict_list.sort(key=lambda m: m.manager_instance != None)
 
+    final_list = manager_dict_list + employee_dict_list
+
+    for employee in final_list:
+        employee.print_name()
+    
+    print('-'*20)
+
+    total_salary = get_total_salary(final_list)
+    print(f'Total salary :{total_salary}')
 
 if __name__ == '__main__':
     main()
