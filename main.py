@@ -57,8 +57,13 @@ def main():
 
     final_list = manager_dict_list + employee_dict_list
 
-    #TODO print the final information for each employee from final_list, print total salary as well
+    for employee in final_list:
+        employee.print_name()
+    
+    print('-'*20)
 
+    total_salary = get_total_salary(final_list)
+    print(f'Total salary :{total_salary}')
 
 if __name__ == '__main__':
     main()

@@ -63,13 +63,22 @@ class Employee:
         self.manager_instance = manager
         manager.employees.append(self)
 
+    def print_name(self):
+        print(self.name)
+
 
 class Manager(Employee):
     def __init__(self, employee):
         super().__init__(employee.id, employee.name, employee.manager, employee.salary)
         self.manager_instance = employee.manager_instance
         self.employees = []
-
+    
+    def print_name(self):
+        super().print_name()
+        print(f'Employee of {self.name}')
+        for employee in self.employees:
+            print("\t " + employee.name)
+        print('-'*20)
 
 # DTO data transfer object
 class EmployeeJson(BaseModel):
