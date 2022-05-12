@@ -1,5 +1,6 @@
-from src.main import get_employee_list, get_total_salary
-from src.employee_config import Employee
+from package.total_salary import get_total_salary
+from package.load_data import get_employee_list
+from package.employee_config import Employee
 # testing whether the function behaves as expected.
 # apply assertion to ensure the right answer.
 

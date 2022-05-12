@@ -1,6 +1,5 @@
-
-from src.main import validate_employee_json
-from src.employee_config import EmployeeJson
+from package import validate_employee_json
+from package.employee_config import EmployeeJson
 
 
 def test_validate_employee_json():
