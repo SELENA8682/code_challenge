@@ -1,29 +1,8 @@
-import json
-from typing import List
 
-from employee_config import Employee, EmployeeJson, Manager
-
-
-def get_employee_list(file_name) -> List[Employee]:
-    if not file_name:
-        return []
-
-    file = open(file_name)
-    employee_list = json.load(file)
-    new_employee_list = []
-    for employee in employee_list:
-        employee_instance = EmployeeJson(**employee).get_employee()
-        new_employee_list.append(employee_instance)
-
-    file.close()
-    return new_employee_list
-
-
-def get_total_salary(employee_list):
-    if employee_list:
-        return sum(em.salary for em in employee_list)
-    return 0
-
+from package.employee_config import Manager
+from package.load_data import get_employee_list
+from package.total_salary import get_total_salary
+from package.validate_employee_json import validate_employee_json
 
 def main():
     employee_list = get_employee_list("input.json")
@@ -32,12 +11,14 @@ def main():
     for employee in employee_list:
         employee_dict[employee.id] = employee
 
+    validate_employee_json(employee_list)
+
+
     manager_dict = {}
     for employee in employee_list:
         manager_id = employee.manager
         if not manager_id:
             continue
-
         manager = None
 
         if manager_id in manager_dict:
@@ -59,11 +40,12 @@ def main():
 
     for employee in final_list:
         employee.print_name()
-    
-    print('-'*20)
 
+    print('-'*20)
     total_salary = get_total_salary(final_list)
     print(f'Total salary :{total_salary}')
+    
 
 if __name__ == '__main__':
     main()
+
