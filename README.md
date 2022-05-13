@@ -1,7 +1,7 @@
 # code challenge
 ## Enviroment
 - python
-- pydantic
+- pydantic 
 - pytest
 
 ##  Files
@@ -17,7 +17,7 @@
 ## Work flow
 
 ### 1.load json file (input.json) 
-### 2.define Enployee class and EmployeeJson(BaseModel) class for pydantic
+### 2.define Enployee class and EmployeeJson(BaseModel)  class for pydantic
 ### 3.create employee_list to store json data
 ### 4.create new_employee_list to get employee data from EmployeeJson which transfer from employee_list
 ### 5.define fuction get_total_salary from employee_list
