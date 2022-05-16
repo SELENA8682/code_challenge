@@ -9,12 +9,13 @@
 - long_description = file: README.md
 - long_description_content_type = text/markdown
 - classifiers =
-    #### Programming Language :: Python :: 3
-    #### Operating System :: OS Independent
+      
+    * Programming Language :: Python :: 3
+    *  Operating System :: OS Independent
 
 - packages = 
-    #### python_requires = >=3.10
-    #### pytest (pip install -U pytest)
-    #### pydantic (pip install pydantic)
+    * python_requires = >=3.10
+    * pytest (pip install -U pytest)
+    * pydantic (pip install pydantic)
 
 
