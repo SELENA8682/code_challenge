@@ -104,14 +104,12 @@ class EmployeeJson(BaseModel):
         """
         return Employee(self.id, self.first_name, self.manager, self.salary)
 
-    @validator('first_name')
-    def first_name_alphanumeric(cls, v):
-        assert v.capitalize(), 'must first letter must be capital'
-        assert v.isalnum(), 'must be alphanumeric'
-        return v
-
-try:
-    EmployeeJson(id=2, first_name='dave1', manager=1, salary=20000)
-except ValidationError as e:
-    print(e)
+    # @validator('first_name')
+    # def first_name_alphanumeric(cls, v):
+    #     try:
+    #         assert v.capitalize(), 'must first letter must be capital'
+    #         assert v.isalnum(), 'must be alphanumeric' 
+        
+    #     except ValidationError as v:
+    #         print("wrong name")
     

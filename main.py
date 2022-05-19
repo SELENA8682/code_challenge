@@ -1,12 +1,11 @@
 
-from package.employee_config import Manager
 from package.link_manager_with_em_id import link_manager_with_em_id
 from package.load_data import get_employee_list
 from package.total_salary import get_total_salary
 from package.validate_employee_json import validate_employee_json
 
 def main():
-    employee_list = get_employee_list("input.json")
+    employee_list = get_employee_list("input_namewrong.json")
 
     validate_employee_json(employee_list)
 

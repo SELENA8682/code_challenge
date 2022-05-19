@@ -13,13 +13,13 @@
     },
     {
         "id": 3,
-        "first_name": "Andy",
+        "first_name": "Andy1",
         "manager": 1,
-        "salary": 90000
+        "salary": "123"
     },
     {
         "id": 4,
-        "first_name": "Jason",
+        "first_name": "Jason2",
         "manager": 1,
         "salary": 80000
     },

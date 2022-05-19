@@ -33,7 +33,7 @@
         "id": 6,
         "first_name": "Rick",
         "manager": 1,
-        "salary": 60000
+        "salary": "asd"
     },
     {
         "id": 9,
