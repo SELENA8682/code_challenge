@@ -1,5 +1,5 @@
 
-from package.employee_config import Employee
+from service.employee_config import Employee
 from package.load_data import get_employee_list
 from package.total_salary import get_total_salary
 # testing whether the function behaves as expected.

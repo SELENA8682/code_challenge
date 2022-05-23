@@ -1,6 +1,6 @@
 
-from package.employee_config import EmployeeJson
-from package.validate_employee_json import validate_employee_json
+from service.employee_config import EmployeeJson
+from service.load_data import Data
 
 
 def test_validate_employee_json():
@@ -9,7 +9,7 @@ def test_validate_employee_json():
     generate_employee(3, "Danana", 1, 30000),
     generate_employee(4, "Eanana", 1, 40000),
     generate_employee(5, "Fanana", 1, 30000)]
-    validate_employee_json(employee_json_list)
+    Data().validate_employee_json(employee_json_list)
 
 def generate_employee(id,first_name,manager,salary ):
    return EmployeeJson(id=id, first_name=first_name, manager=manager, salary=salary)
