@@ -62,7 +62,7 @@ class Employee_data:
             for employee in file_name:
                 employee_instance = EmployeeJson(**employee).get_employee()
                 new_employee_list.append(employee_instance)       
-            print(new_employee_list)   
+        
             """
             id shouldn't be duplicated
             manager id should point to an existing id ,manager shouldn't be itself
@@ -71,8 +71,8 @@ class Employee_data:
             for employee in new_employee_list:
                 if employee.id in employee_list_set:
                     raise ValueError(f"Duplicate item {employee.id}")
-            else:
-                employee_list_set.add(employee.id)
+                else:
+                    employee_list_set.add(employee.id)
                 pass
 
             for em in new_employee_list:
@@ -81,7 +81,7 @@ class Employee_data:
 
                 elif em.manager not in employee_list_set :
                     raise ValueError(f"manager {em.id} not exist")
-            
+            return new_employee_list
             
         except jsonschema.exceptions.ValidationError as err:
             print("errors in schema : ")
@@ -94,23 +94,3 @@ class Employee_data:
             print("ValidationError")
         except Exception as e :
             print(e)
-    
-    # def validate_employee_json(self, employee_json_list):
-    #     """
-    #     id shouldn't be duplicated
-    #     manager id should point to an existing id ,manager shouldn't be itself
-    #     """
-    #     employee_list_set = set([])
-    #     for employee in employee_json_list:
-    #         if employee.id in employee_list_set:
-    #             raise ValueError(f"Duplicate item {employee.id}")
-    #         else:
-    #             employee_list_set.add(employee.id)
-    #             pass
-
-    #     for em in employee_json_list:
-    #         if em.manager == None :
-    #             print(f"top manager {em.name} ")
-
-    #         elif em.manager not in employee_list_set :
-    #             raise ValueError(f"manager {em.id} not exist")
