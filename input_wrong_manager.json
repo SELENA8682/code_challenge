@@ -9,13 +9,13 @@
         "id": 2,
         "first_name": "Jeff",
         "manager": null,
-        "salary": 120000
+        "salary": 110000
     },
     {
         "id": 3,
         "first_name": "Andy",
-        "manager": 1,
-        "salary": 130000
+        "manager": 100,
+        "salary": 90000
     },
     {
         "id": 4,
@@ -27,7 +27,7 @@
         "id": 5,
         "first_name": "Dan",
         "manager": 1,
-        "salary": 120000
+        "salary": 70000
     },
     {
         "id": 6,

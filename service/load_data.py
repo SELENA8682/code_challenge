@@ -3,6 +3,7 @@ from typing import List
 from jsonschema import validate
 import jsonschema
 from pydantic import ValidationError
+from service.custom_error import IDError, ManagerError, SalaryAmountError, SalaryRangeError
 from service.employee_config import Employee, EmployeeJson
 
 class Employee_data:
@@ -52,8 +53,7 @@ class Employee_data:
                             "salary"
                             ]
                         }
-                    },
-                    "additionalProperties": False
+                    }
                 }
             jsonschema.Draft4Validator.check_schema(json_object_schema)
             validate(instance= file_name, schema= json_object_schema)
@@ -70,17 +70,32 @@ class Employee_data:
             employee_list_set = set([])
             for employee in new_employee_list:
                 if employee.id in employee_list_set:
-                    raise ValueError(f"Duplicate item {employee.id}")
+                    raise IDError(f"Duplicate item {employee.id}")
                 else:
                     employee_list_set.add(employee.id)
-                pass
+                
 
-            for em in new_employee_list:
-                if em.manager == None :
-                    print(f"top manager {em.name} ")
+            for employee in new_employee_list:
+                if employee.manager == None :
+                    max_value = employee.salary
+                    print(f"top manager {employee.name} ")
 
-                elif em.manager not in employee_list_set :
-                    raise ValueError(f"manager {em.id} not exist")
+                elif employee.manager not in employee_list_set :
+                    raise ManagerError(f"manager {employee.id} is not exist")
+                
+
+            employee_salary = []
+            for employee in new_employee_list:
+                if employee.salary not in range(50000, 200000):
+                    raise SalaryRangeError (f"salary amount {employee.salary} is not in (50000, 200000) range")
+                else:
+                    employee_salary.append(employee.salary)
+
+            for employee in new_employee_list:
+                if employee.salary > max_value:
+                    raise SalaryAmountError
+                else:
+                    pass
             return new_employee_list
             
         except jsonschema.exceptions.ValidationError as err:
